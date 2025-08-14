@@ -180,9 +180,9 @@ void rotateGear(uint8_t fps) {
 
 // Displays a neat diamond pattern.
 // Can be interrupted if newCommand is set.
-void diamondPattern(uint16_t range, uint8_t fps) {
+void diamondPattern(uint8_t fps) {
   int frameDelay = 1000/fps;
-  for(int i = 0; i <= 256; i += 1) {
+  for(int i = 0; i <= 255; i += 1) {
     if (newCommand == true) break;
 
     int startTime = millis();
@@ -422,13 +422,10 @@ void loop1() {
       break;
     // Run the diamond pattern with serial arguments.
     case 'd':
-      if (rp2040.fifo.available() >= 2) {
-        range = rp2040.fifo.pop() & rp2040.fifo.pop();
-      }
       if (rp2040.fifo.available()) {
         fps = rp2040.fifo.pop();
       }
-      diamondPattern(range, fps);
+      diamondPattern(fps);
       break;
     // Send the rp2040 to the bootloader.
     case 'e':
