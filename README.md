@@ -1,2 +1,45 @@
-# FW_LED_Matrix_Firmware
-Firmware for the Framework LED matrix
+# Framework LED Matrix Firmware
+## Preamble
+This repository contains custom firmware for the [Framework LED Matrix](https://frame.work/products/16-led-matrix).
+
+The [default firmware](https://github.com/FrameworkComputer/inputmodule-rs/tree/main) for the Framework LED Matrix can not produce all 256 brightness levels possible on the LED Matrix hardware. The provided interface software is also difficult to develop with. This custom firmware solves both issues. 
+## Capabilities
+Framework LED Matrix physical documentation is located [here](https://github.com/FrameworkComputer/InputModules/blob/main/Electrical/LEDMatrix/README.md).
+IS31FL3741A 9x34 LED board documentation is located [here](https://lumissil.com/assets/pdf/core/IS31FL3741A_DS.pdf).
+
+This firmware allows programs to write both PWM and scale values (as defined by the IS31FL3741A documentation) for either single LED's, all LED's, or as a 9x34 pixel image to the Framework LED Matrix. It also contains several demo animations such as a custom boot-up animation. The LED matrix can be fully refreshed at approximately 80 frames per second.
+## Usage
+### Installation
+This firmware is programmed in the Arduino language and can be installed to the LED matrix from the uf2 file or by using the Arduino IDE.
+
+To install this firmware from the uf2 file:
+1. Remove the LED Matrix input module from the laptop.
+2. Set the LED Matrix to bootloader mode by gently setting swtich '2' to ON (switch to the right).
+3. Place the LED Matrix input module back into the laptop. The LED Matrix should appear as a folder in the file manager labled "RPI-RP2" or similar.
+4. Open the LED Matrix folder.
+5. Place [rp2040_firmware.ino.uf2](rp2040_firmware/build/rp2040.rp2040.generic/rp2040_firwmare.ino.uf2) from this repository into the LED Matrix folder.
+6. Eject the LED Matrix
+7. Remove the LED Matrix input module from the laptop.
+8. Reset the LED Matrix from bootloader mode by gently setting switch '2' to OFF (switch to the left)
+9. Place the LED Matrix input module back into the laptop. The LED Matrix should display a startup animation.
+
+To install this firmware using the Arduino IDE, follow Joe Schroedl's [instructions](https://jschroedl.com/rgb-start/) for reinstalling firmware for his own RGB LED Matrix. **However, instead of following steps 8-10 install the Arduino code in this repository and open it in the Arduino IDE. The Adafruit NeoPixel Library is not necessary.**
+### Associated Software
+[FW_LED_Matrix_Interface](https://github.com/sigroot/FW_LED_Matrix_Interface) is a Rust library for interfacing between this firmware and other Rust programs.
+
+[FW_LED_Matrix_Board](https://github.com/sigroot/FW_LED_Matrix_Board) divides the 9x34 LED Matrix into 3 smaller 9x10 "applets" and provides a language agnostic interface between these applets and other programs.
+
+[FW_LED_Matrix_Applet](https://github.com/sigroot/FW_LED_Matrix_Applet) is a Rust Library for interfacing between Rust programs and [FW_LED_Matrix_Board](https://github.com/sigroot/FW_LED_Matrix_Board).
+### Communication
+Communication is over a serial port. Commands are entered from the computer as 8-bit characters. Each command may require additional 8-bit parameters and may return a response. For example, sending an 'M' over the serial port will write new PWM values to the LED Matrix. The next 306 8-bit values over the serial port will be accepted as the PWM values in reading-order. The LED Matrix will then return an 'M' to indicate a successful write. The command list is specified below:
+
+000 (Do nothing) - No parameters - No return values
+'a' (Play startup animation until interrupted) - No parameters - No return values
+'A' (Play startup animation once, then blank) - No parameters - No return values
+'b' (Turn the current image into a fire animation) - No parameters - No return values
+'c' (Clear the queue between the LED Matrix command reader and command processor) - No parameters - No return values
+'d' (Display a diamond animation) - 8-bit framerate value - No return values
+'e' (Send rp2040 to bootloader) - No parameters - No return values
+'f' (display fireplace animation until a new command is run) - No parameters - No return values
+
+## License
