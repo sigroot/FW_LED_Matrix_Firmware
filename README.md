@@ -49,9 +49,9 @@ Opcode | Description | Parameters | Return Values
 'M' | Write a new image to the matrix LEDs' PWM, then send a response for software blocking | 306 8-bit PWM values | a single 'M'
 'n' | Write a new image to the matrix LEDs' scale | 306 8-bit scale values | no return values
 'N' | Write a new image to the matrix LEDs' scale, then send a response for software blocking | 306 8-bit scale values | a single 'N'
-'p' | Set a matrix LED's PWM | 1 8-bit x-value (0-8), 1 8-bit y-value (0-33), 1 8-bit PWM value | no return value
-'q' | Set a matrix LED's scale | 1 8-bit x-value (0-8), 1 8-bit y-value (0-33), 1 8-bit scale value | no return value
-'r' | Display a spinning ring animation until a new command is received | 1 8-bit framerate value | no return value
+'p' | Set a matrix LED's PWM | 1 8-bit x-value (0-8), 1 8-bit y-value (0-33), 1 8-bit PWM value | no return values
+'q' | Set a matrix LED's scale | 1 8-bit x-value (0-8), 1 8-bit y-value (0-33), 1 8-bit scale value | no return values
+'r' | Display a spinning ring animation until a new command is received | 1 8-bit framerate value | no return values
 's' | Set the scale for every LED | 1 8-bit scale value | no return value
 't' | Run a test pattern on every LED and for every PWM | no parameters | no return values
 'w' | Set the PWM for every LED | 1 8-bit PWM value | no return value
