@@ -52,9 +52,9 @@ Opcode | Description | Parameters | Return Values
 'p' | Set a matrix LED's PWM | 1 8-bit x-value (0-8), 1 8-bit y-value (0-33), 1 8-bit PWM value | no return values
 'q' | Set a matrix LED's scale | 1 8-bit x-value (0-8), 1 8-bit y-value (0-33), 1 8-bit scale value | no return values
 'r' | Display a spinning ring animation until a new command is received | 1 8-bit framerate value | no return values
-'s' | Set the scale for every LED | 1 8-bit scale value | no return value
+'s' | Set the scale for every LED | 1 8-bit scale value | no return values
 't' | Run a test pattern on every LED and for every PWM | no parameters | no return values
-'w' | Set the PWM for every LED | 1 8-bit PWM value | no return value
+'w' | Set the PWM for every LED | 1 8-bit PWM value | no return values
 127 | Return a known string to confirm correct firmware | no parameters | returns e.g. "Sig FW LED Matrix FW V1.1"
 
 ## This project is licensed under the MIT license
