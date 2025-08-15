@@ -32,7 +32,7 @@ To install this firmware using the Arduino IDE, follow Joe Schroedl's [instructi
 
 [FW_LED_Matrix_Applet](https://github.com/sigroot/FW_LED_Matrix_Applet) is a Rust Library for interfacing between Rust programs and [FW_LED_Matrix_Board](https://github.com/sigroot/FW_LED_Matrix_Board).
 ### Communication
-Communication is over a serial port. Commands are entered from the computer as 8-bit characters. Each command may require additional 8-bit parameters and may return a response. For example, sending an 'M' over the serial port will write new PWM values to the LED Matrix. The next 306 8-bit values over the serial port will be accepted as the PWM values in reading-order. The LED Matrix will then return an 'M' to indicate a successful write. The command list is specified below:
+Communication is over a serial port. Commands are entered from the computer as 8-bit characters. Each command may require additional 8-bit parameters and may return a response. For example, sending an 'M' over the serial port will start writing new PWM values to the LED Matrix. The next 306 8-bit values over the serial port will be accepted as the new PWM values in reading-order. The LED Matrix will then return an 'M' to indicate a successful write. The command list is specified below:
 
 Opcode | Description | Parameters | Return Values
 --- | --- | --- | ---
