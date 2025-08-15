@@ -491,7 +491,7 @@ void loop1() {
         Serial.println("ERROR: too few arguments for writeAllScale");
       }
       break;
-    // Run a test patten on every LED and PWM.
+    // Run a test pattern on every LED and PWM.
     case 't':
       testAllPixel();
       break;

@@ -1,4 +1,5 @@
 # Framework LED Matrix Firmware
+![](readme/matrix.fig)
 ## Preamble
 This repository contains custom firmware for the [Framework LED Matrix](https://frame.work/products/16-led-matrix).
 
@@ -33,13 +34,35 @@ To install this firmware using the Arduino IDE, follow Joe Schroedl's [instructi
 ### Communication
 Communication is over a serial port. Commands are entered from the computer as 8-bit characters. Each command may require additional 8-bit parameters and may return a response. For example, sending an 'M' over the serial port will write new PWM values to the LED Matrix. The next 306 8-bit values over the serial port will be accepted as the PWM values in reading-order. The LED Matrix will then return an 'M' to indicate a successful write. The command list is specified below:
 
-000 (Do nothing) - No parameters - No return values
-'a' (Play startup animation until interrupted) - No parameters - No return values
-'A' (Play startup animation once, then blank) - No parameters - No return values
-'b' (Turn the current image into a fire animation) - No parameters - No return values
-'c' (Clear the queue between the LED Matrix command reader and command processor) - No parameters - No return values
-'d' (Display a diamond animation) - 8-bit framerate value - No return values
-'e' (Send rp2040 to bootloader) - No parameters - No return values
-'f' (display fireplace animation until a new command is run) - No parameters - No return values
+Opcode | Description | Parameters | Return Values
+--- | --- | --- | ---
+000 | Do nothing | No parameters | No return values
+'a' | Play startup animation until interrupted | No parameters | No return values
+'A' | Play startup animation once, then blank | No parameters | No return values
+'b' | Turn the current image into a fire animation | No parameters | No return values
+'c' | Clear the queue between the LED Matrix command reader and command processor | No parameters | No return values
+'d' | Display a diamond animation | 1 8-bit framerate value | No return values
+'e' | Send rp2040 to bootloader | No parameters | No return values
+'f' | Display fireplace animation until a new command is received | No parameters | No return values
+'g' | Display a spinning gear until a new command is received | 1 8-bit framerate value | no return values
+'m' | Write a new image to the matrix LEDs' PWM | 306 8-bit PWM values | no return values
+'M' | Write a new image to the matrix LEDs' PWM, then send a response for software blocking | 306 8-bit PWM values | a single 'M'
+'n' | Write a new image to the matrix LEDs' scale | 306 8-bit scale values | no return values
+'N' | Write a new image to the matrix LEDs' scale, then send a response for software blocking | 306 8-bit scale values | a single 'N'
+'p' | Set a matrix LED's PWM | 1 8-bit x-value (0-8), 1 8-bit y-value (0-33), 1 8-bit PWM value | no return value
+'q' | Set a matrix LED's scale | 1 8-bit x-value (0-8), 1 8-bit y-value (0-33), 1 8-bit scale value | no return value
+'r' | Display a spinning ring animation until a new command is received | 1 8-bit framerate value | no return value
+'s' | Set the scale for every LED | 1 8-bit scale value | no return value
+'t' | Run a test pattern on every LED and for every PWM | no parameters | no return values
+'w' | Set the PWM for every LED | 1 8-bit PWM value | no return value
+127 | Return a known string to confirm correct firmware | no parameters | returns e.g. "Sig FW LED Matrix FW V1.1"
 
-## License
+## This project is licensed under the MIT license
+
+Copyright © 2025 Sigroot
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
