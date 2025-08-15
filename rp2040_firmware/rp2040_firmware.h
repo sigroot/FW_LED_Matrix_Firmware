@@ -379,7 +379,7 @@ uint8_t writeAllScale(uint8_t value) {
   return max(pageErr1, max(pageErr2, max(error1, error2)));
 }
 
-// Writes pwm values to each LED matching the values of an inputted matirx by 
+// Writes pwm values to each LED matching the values of an inputted matrix by 
 // using the LED Matrix's Address Auto Increment mode.
 uint8_t writeMatrix(uint8_t inputMatrix[LEDHeight][LEDWidth], bool useGamma = false) {
   // Switch to page 0
