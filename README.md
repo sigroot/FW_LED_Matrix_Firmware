@@ -1,5 +1,5 @@
 # Framework LED Matrix Firmware
-![](readme/matrix.fig)
+![](readme/matrix.gif)
 ## Preamble
 This repository contains custom firmware for the [Framework LED Matrix](https://frame.work/products/16-led-matrix).
 
