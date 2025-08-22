@@ -5,7 +5,8 @@ This repository contains custom firmware for the [Framework LED Matrix](https://
 
 The [default firmware](https://github.com/FrameworkComputer/inputmodule-rs/tree/main) for the Framework LED Matrix can not produce all 256 brightness levels possible on the LED Matrix hardware. The provided interface software is also difficult to develop with. This custom firmware solves both issues. 
 ## Capabilities
-Framework LED Matrix physical documentation is located [here](https://github.com/FrameworkComputer/InputModules/blob/main/Electrical/LEDMatrix/README.md).
+Framework LED Matrix Input Module physical documentation is located [here](https://github.com/FrameworkComputer/InputModules/blob/main/Electrical/LEDMatrix/README.md).
+
 IS31FL3741A 9x34 LED board documentation is located [here](https://lumissil.com/assets/pdf/core/IS31FL3741A_DS.pdf).
 
 This firmware allows programs to write both PWM and scale values (as defined by the IS31FL3741A documentation) for either single LED's, all LED's, or as a 9x34 pixel image to the Framework LED Matrix. It also contains several demo animations such as a custom boot-up animation. The LED matrix can be fully refreshed at approximately 80 frames per second.
@@ -15,16 +16,16 @@ This firmware is programmed in the Arduino language and can be installed to the 
 
 To install this firmware from the uf2 file:
 1. Remove the LED Matrix input module from the laptop.
-2. Set the LED Matrix to bootloader mode by gently setting swtich '2' to ON (switch to the right).
+2. Set the LED Matrix to bootloader mode by gently setting swtich '2' to ON (press the switch to the right).
 3. Place the LED Matrix input module back into the laptop. The LED Matrix should appear as a folder in the file manager labled "RPI-RP2" or similar.
 4. Open the LED Matrix folder.
-5. Place [rp2040_firmware.ino.uf2](rp2040_firmware/build/rp2040.rp2040.generic/rp2040_firwmare.ino.uf2) from this repository into the LED Matrix folder.
-6. Eject the LED Matrix
+5. Place [rp2040_firmware.ino.uf2](rp2040_firmware/build/rp2040.rp2040.generic/rp2040_firmware.ino.uf2) from this repository into the LED Matrix folder.
+6. Eject the LED Matrix folder
 7. Remove the LED Matrix input module from the laptop.
-8. Reset the LED Matrix from bootloader mode by gently setting switch '2' to OFF (switch to the left)
-9. Place the LED Matrix input module back into the laptop. The LED Matrix should display a startup animation.
+8. Reset the LED Matrix from bootloader mode by gently setting switch '2' to OFF (press the switch to the left)
+9. Place the LED Matrix input module back into the laptop. If the firmware is installed correctly, the LED Matrix will display a startup animation.
 
-To install this firmware using the Arduino IDE, follow Joe Schroedl's [instructions](https://jschroedl.com/rgb-start/) for reinstalling firmware for his own RGB LED Matrix. **However, instead of following steps 8-10 install the Arduino code in this repository and open it in the Arduino IDE. The Adafruit NeoPixel Library is not necessary.**
+To install this firmware using the Arduino IDE, follow Joe Schroedl's [instructions](https://jschroedl.com/rgb-start/) for reinstalling firmware to his own RGB LED Matrix. **However, instead of following steps 8-10 install the Arduino code in this repository and open it in the Arduino IDE. The Adafruit NeoPixel Library is not necessary.**
 ### Associated Software
 [FW_LED_Matrix_Interface](https://github.com/sigroot/FW_LED_Matrix_Interface) is a Rust library for interfacing between this firmware and other Rust programs.
 
