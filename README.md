@@ -28,7 +28,7 @@ To install this firmware using the Arduino IDE, follow Joe Schroedl's [instructi
 ### Associated Software
 [FW_LED_Matrix_Interface](https://github.com/sigroot/FW_LED_Matrix_Interface) is a Rust library for interfacing between this firmware and other Rust programs.
 
-[FW_LED_Matrix_Board](https://github.com/sigroot/FW_LED_Matrix_Board) divides the 9x34 LED Matrix into 3 smaller 9x10 "applets" and provides a language agnostic interface between these applets and other programs.
+[FW_LED_Matrix_Board](https://github.com/sigroot/FW_LED_Matrix_Board) divides the 9x34 LED Matrix into 3 smaller 9x11 "applets" and provides a language agnostic interface between these applets and other programs.
 
 [FW_LED_Matrix_Applet](https://github.com/sigroot/FW_LED_Matrix_Applet) is a Rust Library for interfacing between Rust programs and [FW_LED_Matrix_Board](https://github.com/sigroot/FW_LED_Matrix_Board).
 ### Communication
@@ -57,12 +57,3 @@ Opcode | Description | Parameters | Return Values
 'w' | Set the PWM for every LED | 1 8-bit PWM value | no return values
 127 | Return a known string to confirm correct firmware | no parameters | returns e.g. "Sig FW LED Matrix FW V1.1"
 
-## This project is licensed under the MIT license
-
-Copyright © 2025 Sigroot
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
