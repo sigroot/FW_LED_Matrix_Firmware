@@ -1,6 +1,8 @@
 # Framework LED Matrix Firmware
 ![](readme/matrix.gif)
 ## Preamble
+**THIS IS UNOFFICIAL SOFTWARE. I AM NOT AFFILIATED WITH FRAMEWORK**
+
 This repository contains custom firmware for the [Framework LED Matrix](https://frame.work/products/16-led-matrix).
 
 The [default firmware](https://github.com/FrameworkComputer/inputmodule-rs/tree/main) for the Framework LED Matrix can not produce all 256 brightness levels possible on the LED Matrix hardware. The provided interface software is also difficult to develop with. This custom firmware solves both issues. 
