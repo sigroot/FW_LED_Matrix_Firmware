@@ -1,5 +1,5 @@
 # Framework LED Matrix Firmware
-![](readme/matrix.gif)
+![](video/matrix.gif)
 ## Preamble
 **THIS IS UNOFFICIAL SOFTWARE. I AM NOT AFFILIATED WITH FRAMEWORK**
 
